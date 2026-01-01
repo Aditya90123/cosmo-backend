@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>COSMO Admin</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont;
+      background: #f5f5f7;
+      padding: 40px;
+    }
+
+    h1 {
+      font-weight: 600;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 30px 60px rgba(0,0,0,.08);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border-radius: 14px;
+      background: linear-gradient(180deg,#007aff,#0051d4);
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🍎 COSMO Admin Panel</h1>
+
+<div class="card">
+  <h2>Add Product</h2>
+  <form method="POST" action="/admin/add">
+    <input name="name" placeholder="Product name">
+    <input name="category" placeholder="Category">
+    <input name="pdf" placeholder="PDF link">
+    <textarea name="description" placeholder="Description"></textarea>
+    <button>Add Product</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Products</h2>
+  <table>
+    {% for p in products %}
+    <tr>
+      <td>{{ p.name }}</td>
+      <td>{{ p.category }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div class="card">
+  <h2>Contact Messages</h2>
+  <table>
+    {% for m in messages %}
+    <tr>
+      <td><b>{{ m.name }}</b></td>
+      <td>{{ m.email }}</td>
+      <td>{{ m.message }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>
